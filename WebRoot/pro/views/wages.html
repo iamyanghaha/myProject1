@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link href="../styles/behind.css" rel="stylesheet" />
+		<link href="../styles/manage.css" rel="stylesheet" />
+		<title>企业信息管理平台-职员薪资</title>
+	</head>
+
+	<body onload="getDate()">
+		<div class="header">
+			<img class="logo" src="../images/logo.png" />
+			<label class="logo-title">企业信息管理平台</label>
+			<ul class="inline">
+				<li>
+					<img src="../images/06.png" />&nbsp;&nbsp;欢迎您，Admin
+				</li>
+				<li class="dropdown">
+					<a class="dropdown-toggle mymsg" onclick="openadmin();"><img src="../images/04.png" />&nbsp;&nbsp;修改信息</a>
+				</li>
+				<li>
+					<a class="loginout" href="../manage.html"><img src="../images/05.png" />&nbsp;&nbsp;退出</a>
+				</li>
+			</ul>
+		</div>
+
+		<div class="nav">
+			<ul class="breadcrumb">
+				<li>
+					<a href="#"><img src="../images/home.png" />首页</a> <span class="divider">>></span></li>
+				<li class="active"></li>
+
+			</ul>
+
+		</div>
+		<div id="sysdate"></div>
+		<div class="container-fluid content">
+			<div class="row-fluid">
+				<div class="span2 content-left">
+					<div class="accordion">
+						<div class="accordion-group">
+							<div class="accordion-heading">
+								<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+									<img class="left-icon" src="../images/settings.png" /><span class="left-title">管理列表</span>
+								</a>
+							</div>
+							<div id="collapseOne" class="accordion-body collapse in">
+								<div class="accordion-inner">
+									<a href="news.html"><img class="left-icon-child" src="../images/07.png" /><span class="left-body"> 新闻公告</span></a>
+								</div>
+								<div class="accordion-inner">
+									<a href="worker.html"><img class="left-icon-child" src="../images/01.png" /><span class="left-body"> 职员信息</span></a>
+								</div>
+								<div class="accordion-inner">
+									<a href="wages.html"><img class="left-icon-child" src="../images/02.png" /><span class="left-body"> 职员薪资</span></a>
+								</div>
+								<div class="accordion-inner">
+									<a href="train.html"><img class="left-icon-child" src="../images/03.png" /><span class="left-body"> 职员培训</span></a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="span10 content-right">
+					<div class="container-fluid">
+						<div class="row-fluid">
+							<div class="add">
+								<a class="btn btn-success" onclick="openadd('新增职员薪资信息');">新增</a>
+								<a class="btn btn-success">打印</a>
+							</div>
+							<div class="page">
+								<a href="#"><img src="../images/08.png" title="首页" /></a>
+								<a href="#"><img src="../images/09.png" title="上一页" /></a>
+								当前是第&nbsp;&nbsp;页&nbsp;&nbsp;&nbsp;&nbsp;共&nbsp;&nbsp;页
+								<a href="#"><img src="../images/10.png" title="下一页" /></a>
+								<a href="#"><img src="../images/11.png" title="尾页" /></a>
+							</div>
+							<div class="search">
+								<input type="text" placeholder="Search" class="seartext" />
+								<a class="btn btn-success">搜索</a>
+							</div>
+							<div class="w">
+								<div class="span12">
+									<table class="table table-condensed table-bordered table-hover tab">
+										<thead>
+											<tr>
+												<th width="10%">工号</th>
+												<th width="15%">姓名</th>
+												<th width="10%">基本工资</th>
+												<th width="10%">岗位工资</th>
+												<th width="10%">加班工资</th>
+												<th width="10%">绩效奖</th>
+												<th width="10%">工龄奖</th>
+												<th width="15%">合计</th>
+												<th width="10%">操作</th>
+											</tr>
+										</thead>
+										<tbody id="tbody">
+											<tr>
+												<td width="10%">工号</td>
+												<td width="15%">姓名</td>
+												<td width="10%">基本工资</td>
+												<td width="10%">岗位工资</td>
+												<td width="10%">加班工资</td>
+												<td width="10%">绩效奖</td>
+												<td width="10%">工龄奖</td>
+												<td width="15%">合计</td>
+												<td width="10%">
+													<a class="btn" onclick="openedt('修改职员薪资信息');">修改</a>&nbsp;&nbsp;
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<div id="page" class="tr"></div>
+								</div>
+							</div>
+
+							<div id="addModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+									<h4 id="myModalLabel">新增职员薪资</h4>
+								</div>
+								<div class="modal-body">
+									<form class="form-horizontal">
+										<div class="control-group">
+											<label class="control-label" for="name">姓名</label>
+											<div class="controls">
+												<input type="text" id="name" placeholder="职员姓名">
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label" for="baseWage">基本工资</label>
+											<div class="controls">
+												<input type="text" id="wage.baseWage" placeholder="">
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label" for="postWage">岗位工资</label>
+											<div class="controls">
+												<input type="text" id="wage.postWage" placeholder="">
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label" for="overtimeWage">加班工资</label>
+											<div class="controls">
+												<input type="text" id="wage.overtimeWage" placeholder="">
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label" for="performance">绩效奖</label>
+											<div class="controls">
+												<input type="text" id="wage.performance" placeholder="">
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label" for="seniority">工龄奖</label>
+											<div class="controls">
+												<input type="text" id="wage.seniority" placeholder="">
+											</div>
+										</div>
+									</form>
+								</div>
+								<div class="modal-footer">
+									<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+									<button class="btn btn-primary" id="add" onclick="add();">保存</button>
+								</div>
+							</div>
+
+							<div id="adminModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="top: 25%;">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+									<h4 id="myModalLabel">修改密码</h4>
+								</div>
+								<div class="modal-body">
+									<form class="form-horizontal">
+										<div class="control-group">
+											<label class="control-label" for="name">帐号</label>
+											<div class="controls">
+												<input type="text" id="name" placeholder="" readonly="readonly">
+											</div>
+										</div>
+										<div class="control-group">
+											<label class="control-label" for="time">密码</label>
+											<div class="controls">
+												<input type="password" id="time" placeholder="">
+											</div>
+										</div>
+									</form>
+								</div>
+
+								<div class="modal-del-footer">
+									<button class="btn btn-primary" id="edt" onclick="edtadmin();">确认</button>&nbsp;&nbsp;&nbsp;&nbsp;
+									<button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+		<div class="foot"></div>
+		<script src="../scripts/jquery-3.0.0.min.js"></script>
+		<script src="../scripts/behind.js"></script>
+	</body>
+
+</html>

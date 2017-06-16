@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.myProject1.JobInf.dao.JobInfMapper">
+	
+	
+	<select id="selectAll" resultType="map">
+		SELECT * FROM jobInf
+	</select>
+	
+	<insert id="addJobInf" parameterType="map">
+		INSERT INTO news VALUES(null, #{title}, #{article}, #{date}, 1);
+	</insert>
+	
+	<delete id="deleteJobInf" parameterType="map">
+		DELETE FROM news WHERE id = #{id}
+	</delete>
+	
+	<update id="updateJobInf" parameterType="map">
+		
+	</update>
+	
+</mapper>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+          "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ssm.myProject1.news.dao.NewsMapper">
+	
+	
+	<select id="selectAllNews" resultType="map">
+		SELECT * FROM news
+	</select>
+	
+	<insert id="addNews" parameterType="map">
+		INSERT INTO news VALUES(null, #{title}, #{article}, #{date}, 1);
+	</insert>
+	
+	<delete id="deleteNews" parameterType="map">
+		DELETE FROM news WHERE id = #{id}
+	</delete>
+	
+	
+	
+	
+	
+	<select id="test" resultType="map">
+		SELECT * FROM user
+	</select>
+	<select id="test1" parameterType="map" resultType="map">
+		SELECT * FROM user WHERE id = #{id}
+	</select>
+</mapper>
